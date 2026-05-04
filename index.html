@@ -1,56 +1,108 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="stylesheet" href="style.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lycée Digital Pro</title>
-<link rel="stylesheet" href="style.css">
+<title>Lycée - Informations</title>
+
+<style>
+body{
+    font-family:Arial;
+    margin:0;
+    background:#f5f7fa;
+}
+
+header{
+    background:#004aad;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+nav{
+    background:#00337a;
+    padding:10px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    margin:10px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+section{
+    padding:40px;
+    max-width:900px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    margin:15px 0;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+footer{
+    background:#002b5c;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:30px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>🏫 Lycée Digital Pro</h1>
-    <nav>
-        <button onclick="showPage('accueil')">Accueil</button>
-        <button onclick="showPage('eleves')">Élèves</button>
-        <button onclick="showPage('profs')">Professeurs</button>
-        <button onclick="showPage('notes')">Notes</button>
-    </nav>
+    <h1>🏫 Lycée Information</h1>
+    <p>Bienvenue sur le site officiel du lycée</p>
 </header>
 
-<!-- ACCUEIL -->
-<section id="accueil" class="page active">
-    <h2>Bienvenue 👋</h2>
-    <p>Système de gestion du lycée moderne</p>
+<nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#infos">Informations</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="accueil">
+    <div class="card">
+        <h2>Bienvenue</h2>
+        <p>Ce site informe les élèves et parents sur les activités du lycée.</p>
+    </div>
 </section>
 
-<!-- ÉLÈVES -->
-<section id="eleves" class="page">
-    <h2>👨‍🎓 Élèves</h2>
-    <input id="nomEleve" placeholder="Nom de l'élève">
-    <button onclick="ajouterEleve()">Ajouter</button>
-    <ul id="listeEleves"></ul>
+<section id="infos">
+    <div class="card">
+        <h2>📢 Informations importantes</h2>
+        <p>- Début des cours : septembre</p>
+        <p>- Examens : juin</p>
+        <p>- Horaires : 8h - 17h</p>
+    </div>
+
+    <div class="card">
+        <h2>📚 Filières</h2>
+        <p>Sciences Mathématiques</p>
+        <p>Sciences Physiques</p>
+        <p>Lettres</p>
+    </div>
 </section>
 
-<!-- PROFESSEURS -->
-<section id="profs" class="page">
-    <h2>👨‍🏫 Professeurs</h2>
-    <input id="nomProf" placeholder="Nom du professeur">
-    <button onclick="ajouterProf()">Ajouter</button>
-    <ul id="listeProfs"></ul>
+<section id="contact">
+    <div class="card">
+        <h2>📩 Contact</h2>
+        <p>Email : lycee@example.com</p>
+        <p>Téléphone : +212 XXX XXX XXX</p>
+    </div>
 </section>
 
-<!-- NOTES -->
-<section id="notes" class="page">
-    <h2>📊 Notes</h2>
-    <input id="eleveNote" placeholder="Nom élève">
-    <input id="note" type="number" placeholder="Note /20">
-    <button onclick="ajouterNote()">Ajouter note</button>
-    <ul id="listeNotes"></ul>
-</section>
+<footer>
+    © 2026 Lycée - Tous droits réservés
+</footer>
 
-<script src="app.js"></script>
 </body>
 </html>
