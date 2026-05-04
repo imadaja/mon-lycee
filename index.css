@@ -1,84 +1,102 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lycée International | Excellence & Tradition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-@layer base {
-  * {
-    box-sizing: border-box;
-  }
+    <!-- Barre de contact supérieure -->
+    <div class="top-bar">
+        <div class="container">
+            <span><i class="fas fa-map-marker-alt"></i> Casablanca, Maroc</span>
+            <span><i class="fas fa-phone"></i> +212 5XX XX XX XX</span>
+        </div>
+    </div>
 
-  html {
-    scroll-behavior: smooth;
-  }
+    <nav class="main-nav">
+        <div class="container nav-flex">
+            <div class="logo">
+                <img src="https://via.placeholder.com/60x60/1a3a5f/ffffff?text=L" alt="Logo">
+                <div class="logo-text">
+                    <strong>LYCÉE</strong>
+                    <span>EXCELLENCE</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Établissement</a></li>
+                <li><a href="#">Pédagogie</a></li>
+                <li><a href="#">Vie Scolaire</a></li>
+                <li><a href="#">Actualités</a></li>
+                <li><a href="#" class="btn-pronote">PRONOTE</a></li>
+            </ul>
+        </div>
+    </nav>
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    color: #1e1b4b;
-    background: #fafafa;
-  }
+    <!-- Hero Section avec Vidéo en Background -->
+    <header class="hero">
+        <div class="video-container">
+            <!-- Vidéo d'ambiance (Placeholder Education) -->
+            <iframe src="https://player.vimeo.com/video/259112818?background=1&autoplay=1&loop=1&byline=0&title=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>L'excellence au cœur de la réussite.</h1>
+                <p>Établissement homologué partenaire du réseau de l'enseignement français à l'étranger.</p>
+                <div class="hero-btns">
+                    <a href="#visite" class="btn-gold">Visite Virtuelle</a>
+                    <a href="#actus" class="btn-white">Actualités</a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  h1, h2, h3, h4 {
-    font-family: 'Playfair Display', serif;
-  }
-}
+    <!-- Section Actualités (Style Descartes) -->
+    <section id="actus" class="news-section container">
+        <div class="section-header">
+            <h2>À la une</h2>
+            <div class="line"></div>
+        </div>
+        
+        <div class="news-grid">
+            <article class="news-item">
+                <div class="news-thumb">
+                    <img src="https://images.unsplash.com/photo-1523050853063-91589436026e?auto=format&fit=crop&w=600&q=80" alt="Diplôme">
+                </div>
+                <div class="news-info">
+                    <span class="category">Examen</span>
+                    <h3>Résultats du Baccalauréat 2025</h3>
+                    <p>Découvrez les statistiques et les mentions obtenues par nos lauréats cette année.</p>
+                </div>
+            </article>
 
-@layer components {
-  .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium px-6 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-primary-200 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0;
-  }
+            <article class="news-item">
+                <div class="news-thumb">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Salle de classe">
+                </div>
+                <div class="news-info">
+                    <span class="category">Pédagogie</span>
+                    <h3>Ouverture des options Internationales</h3>
+                    <p>Nouvelle section disponible pour les classes de Seconde dès la rentrée prochaine.</p>
+                </div>
+            </article>
 
-  .btn-secondary {
-    @apply border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-medium px-6 py-3 rounded-xl transition-all duration-200;
-  }
+            <article class="news-item">
+                <div class="news-thumb">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80" alt="Sport">
+                </div>
+                <div class="news-info">
+                    <span class="category">Sport</span>
+                    <h3>Tournoi de l'Amitié Inter-Lycées</h3>
+                    <p>Retour sur la victoire de notre équipe de basket lors de la finale régionale.</p>
+                </div>
+            </article>
+        </div>
+    </section>
 
-  .btn-gold {
-    @apply bg-gold-500 hover:bg-gold-600 text-white font-medium px-6 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-amber-200;
-  }
-
-  .card {
-    @apply bg-white rounded-2xl shadow-sm border border-gray-100 p-6;
-  }
-
-  .input-field {
-    @apply w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 font-body text-sm;
-  }
-
-  .section-title {
-    @apply font-display text-3xl md:text-4xl font-bold text-primary-950;
-  }
-
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary-700 to-primary-500 bg-clip-text text-transparent;
-  }
-
-  .status-badge {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
-  }
-}
-
-/* Scroll animations */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-::-webkit-scrollbar-thumb {
-  background: #c7d7fe;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #6366f1;
-}
+</body>
+</html>
