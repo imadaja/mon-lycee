@@ -1,234 +1,55 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lycée Excellence</title>
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial,sans-serif;
-        }
-
-        body{
-            background:#f5f7fa;
-            color:#333;
-        }
-
-        header{
-            background:linear-gradient(135deg,#004aad,#007bff);
-            color:white;
-            padding:20px 50px;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-        }
-
-        .logo{
-            font-size:32px;
-            font-weight:bold;
-        }
-
-        nav a{
-            color:white;
-            text-decoration:none;
-            margin-left:25px;
-            font-size:18px;
-            transition:0.3s;
-        }
-
-        nav a:hover{
-            color:#ffd700;
-        }
-
-        .hero{
-            height:90vh;
-            background:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1') center/cover;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            text-align:center;
-            color:white;
-            position:relative;
-        }
-
-        .hero::before{
-            content:'';
-            position:absolute;
-            inset:0;
-            background:rgba(0,0,0,0.5);
-        }
-
-        .hero-content{
-            position:relative;
-            z-index:1;
-            max-width:800px;
-            padding:20px;
-        }
-
-        .hero h1{
-            font-size:4rem;
-            margin-bottom:20px;
-        }
-
-        .hero p{
-            font-size:1.4rem;
-            margin-bottom:30px;
-        }
-
-        .btn{
-            display:inline-block;
-            padding:15px 35px;
-            background:#ffd700;
-            color:#000;
-            text-decoration:none;
-            border-radius:50px;
-            font-weight:bold;
-            transition:0.3s;
-        }
-
-        .btn:hover{
-            background:white;
-            transform:scale(1.05);
-        }
-
-        section{
-            padding:80px 50px;
-        }
-
-        h2{
-            text-align:center;
-            margin-bottom:50px;
-            font-size:3rem;
-            color:#004aad;
-        }
-
-        .cards{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-            gap:30px;
-        }
-
-        .card{
-            background:white;
-            padding:30px;
-            border-radius:20px;
-            box-shadow:0 10px 30px rgba(0,0,0,0.1);
-            transition:0.3s;
-        }
-
-        .card:hover{
-            transform:translateY(-10px);
-        }
-
-        footer{
-            background:#002b5c;
-            color:white;
-            text-align:center;
-            padding:30px;
-        }
-
-        @media(max-width:768px){
-            header{
-                flex-direction:column;
-                gap:20px;
-            }
-
-            .hero h1{
-                font-size:2.5rem;
-            }
-
-            nav{
-                display:flex;
-                flex-wrap:wrap;
-                justify-content:center;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lycée Digital Pro</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <header>
-        <div class="logo">Lycée Excellence</div>
-        <nav>
-            <a href="#accueil">Accueil</a>
-            <a href="#apropos">À propos</a>
-            <a href="#formations">Formations</a>
-            <a href="#actualites">Actualités</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+<header>
+    <h1>🏫 Lycée Digital Pro</h1>
+    <nav>
+        <button onclick="showPage('accueil')">Accueil</button>
+        <button onclick="showPage('eleves')">Élèves</button>
+        <button onclick="showPage('profs')">Professeurs</button>
+        <button onclick="showPage('notes')">Notes</button>
+    </nav>
+</header>
 
-    <section class="hero" id="accueil">
-        <div class="hero-content">
-            <h1>Bienvenue au Lycée Excellence</h1>
-            <p>Former aujourd'hui les leaders de demain.</p>
-            <a href="#contact" class="btn">Nous Contacter</a>
-        </div>
-    </section>
+<!-- ACCUEIL -->
+<section id="accueil" class="page active">
+    <h2>Bienvenue 👋</h2>
+    <p>Système de gestion du lycée moderne</p>
+</section>
 
-    <section id="apropos">
-        <h2>À Propos</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Notre Mission</h3>
-                <p>Offrir une éducation de qualité dans un environnement moderne et stimulant.</p>
-            </div>
-            <div class="card">
-                <h3>Nos Valeurs</h3>
-                <p>Excellence, discipline, innovation et respect.</p>
-            </div>
-            <div class="card">
-                <h3>Notre Vision</h3>
-                <p>Préparer les élèves aux défis du monde de demain.</p>
-            </div>
-        </div>
-    </section>
+<!-- ÉLÈVES -->
+<section id="eleves" class="page">
+    <h2>👨‍🎓 Élèves</h2>
+    <input id="nomEleve" placeholder="Nom de l'élève">
+    <button onclick="ajouterEleve()">Ajouter</button>
+    <ul id="listeEleves"></ul>
+</section>
 
-    <section id="formations">
-        <h2>Nos Formations</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Sciences Mathématiques</h3>
-                <p>Une formation rigoureuse pour les futurs ingénieurs et chercheurs.</p>
-            </div>
-            <div class="card">
-                <h3>Sciences Expérimentales</h3>
-                <p>Un parcours orienté vers la médecine et les sciences naturelles.</p>
-            </div>
-            <div class="card">
-                <h3>Lettres et Sciences Humaines</h3>
-                <p>Développer l'esprit critique et la culture générale.</p>
-            </div>
-        </div>
-    </section>
+<!-- PROFESSEURS -->
+<section id="profs" class="page">
+    <h2>👨‍🏫 Professeurs</h2>
+    <input id="nomProf" placeholder="Nom du professeur">
+    <button onclick="ajouterProf()">Ajouter</button>
+    <ul id="listeProfs"></ul>
+</section>
 
-    <section id="actualites">
-        <h2>Actualités</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Journée Portes Ouvertes</h3>
-                <p>Venez découvrir notre établissement le 15 juin 2026.</p>
-            </div>
-            <div class="card">
-                <h3>Résultats des Examens</h3>
-                <p>Un taux de réussite exceptionnel de 98% cette année.</p>
-            </div>
-            <div class="card">
-                <h3>Nouveau Laboratoire</h3>
-                <p>Inauguration de notre laboratoire scientifique ultra-moderne.</p>
-            </div>
-        </div>
-    </section>
+<!-- NOTES -->
+<section id="notes" class="page">
+    <h2>📊 Notes</h2>
+    <input id="eleveNote" placeholder="Nom élève">
+    <input id="note" type="number" placeholder="Note /20">
+    <button onclick="ajouterNote()">Ajouter note</button>
+    <ul id="listeNotes"></ul>
+</section>
 
-    <footer id="contact">
-        <p>📍 Fès, Maroc | ☎ +212 5 XX XX XX XX | ✉ contact@lycee-excellence.ma</p>
-        <p>&copy; 2026 Lycée Excellence - Tous droits réservés</p>
-    </footer>
-
+<script src="app.js"></script>
 </body>
 </html>
-```
