@@ -1,39 +1,84 @@
 body{
     margin:0;
-    font-family:Arial;
-    background:#f5f7fa;
+    font-family: 'Segoe UI', sans-serif;
+    background:#f4f6f9;
+    color:#333;
 }
 
+/* HEADER MODERNE */
 header{
-    background:#004aad;
+    background:linear-gradient(135deg,#003a8c,#0066ff);
     color:white;
-    padding:20px;
+    padding:25px;
     text-align:center;
+}
+
+header h1{
+    margin:0;
+    font-size:2.2rem;
+}
+
+/* NAVIGATION PRO */
+nav{
+    margin-top:10px;
 }
 
 nav a{
     color:white;
     margin:10px;
     text-decoration:none;
+    font-weight:500;
+    padding:8px 12px;
+    border-radius:6px;
 }
 
+nav a:hover{
+    background:rgba(255,255,255,0.2);
+}
+
+/* HERO SECTION */
 .hero{
-    background:linear-gradient(#004aad,#007bff);
+    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1');
+    background-size:cover;
+    background-position:center;
+    height:70vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     color:white;
     text-align:center;
-    padding:80px;
 }
 
+.hero h2{
+    font-size:3rem;
+}
+
+/* SECTIONS */
 .container{
+    max-width:1000px;
+    margin:auto;
+    padding:40px 20px;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:20px;
-    padding:40px;
 }
 
+/* CARDS PRO */
 .card{
     background:white;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .hero h2{
+        font-size:2rem;
+    }
 }
