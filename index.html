@@ -1,95 +1,174 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Site officiel du Lycée Excellence - Excellence, Tradition et Innovation.">
-    <title>Lycée Excellence | Établissement d'Enseignement Français</title>
-    
-    <!-- Fonts : Combinaison Luxe (Serif pour titres, Sans pour corps) -->
-<!-- Vérifie que tu as bien ce lien dans ton <head> -->
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="index.css">
-</head>
-<body>
+import React from "react";
+import { motion } from "framer-motion";
+import DepartmentCard from "../components/academic/DepartmentCard";
 
-    <!-- Top Bar -->
-    <div class="header-top">
-        <div class="container flex-between">
-            <div class="contact-info">
-                <span><i class="fas fa-phone"></i> +212 5XX XX XX XX</span>
-                <span><i class="fas fa-envelope"></i> contact@lycee-excellence.ma</span>
-            </div>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
+const SKETCHING_IMG = "https://media.base44.com/images/public/69f933df593f889c9af55a17/e4987cfe9_generated_2bf23d4a.png";
+const SCIENCE_IMG = "https://media.base44.com/images/public/69f933df593f889c9af55a17/aa66a3441_generated_99c6eed9.png";
+const DEBATE_IMG = "https://media.base44.com/images/public/69f933df593f889c9af55a17/d041b7776_generated_5da80522.png";
+const ART_IMG = "https://media.base44.com/images/public/69f933df593f889c9af55a17/66018e15f_generated_914a2f67.png";
+const LIBRARY_IMG = "https://media.base44.com/images/public/69f933df593f889c9af55a17/117d50349_generated_013b1044.png";
+
+const departments = [
+  {
+    title: "Sciences & Technologies",
+    tag: "Filière S",
+    tagColor: "bg-accent/10 text-accent",
+    description: "Notre pôle scientifique offre un enseignement rigoureux en physique-chimie, SVT, sciences de l'ingénieur et numérique, avec des laboratoires équipés des dernières technologies.",
+    image: SCIENCE_IMG,
+    students: 120,
+    courses: 8,
+    schedule: [
+      { time: "8h00", activity: "Mathématiques avancées" },
+      { time: "10h00", activity: "Physique-Chimie en laboratoire" },
+      { time: "13h00", activity: "Sciences de l'Ingénieur" },
+      { time: "15h00", activity: "Projet scientifique encadré" },
+    ],
+  },
+  {
+    title: "Lettres & Humanités",
+    tag: "Filière L",
+    tagColor: "bg-primary/10 text-primary",
+    description: "Littérature française et mondiale, philosophie, histoire et géographie pour former des penseurs critiques et des esprits ouverts sur le monde.",
+    image: LIBRARY_IMG,
+    students: 90,
+    courses: 7,
+    schedule: [
+      { time: "8h00", activity: "Littérature française" },
+      { time: "10h00", activity: "Philosophie et éthique" },
+      { time: "13h00", activity: "Histoire contemporaine" },
+      { time: "15h00", activity: "Atelier d'écriture créative" },
+    ],
+  },
+  {
+    title: "Arts & Création",
+    tag: "Filière Arts",
+    tagColor: "bg-primary/10 text-primary",
+    description: "Arts plastiques, arts numériques, design et expression artistique dans des ateliers lumineux équipés pour la création contemporaine.",
+    image: ART_IMG,
+    students: 60,
+    courses: 6,
+    schedule: [
+      { time: "8h00", activity: "Histoire de l'Art" },
+      { time: "10h00", activity: "Atelier de création plastique" },
+      { time: "13h00", activity: "Arts numériques & Design" },
+      { time: "15h00", activity: "Projet artistique personnel" },
+    ],
+  },
+  {
+    title: "Langues & International",
+    tag: "Section Internationale",
+    tagColor: "bg-accent/10 text-accent",
+    description: "Sections bilingues, programmes d'échanges internationaux et préparation aux certifications linguistiques dans plus de six langues.",
+    image: DEBATE_IMG,
+    students: 80,
+    courses: 5,
+    schedule: [
+      { time: "8h00", activity: "Anglais littéraire avancé" },
+      { time: "10h00", activity: "Civilisation hispanique" },
+      { time: "13h00", activity: "Mandarin ou Arabe" },
+      { time: "15h00", activity: "Débat international (MUN)" },
+    ],
+  },
+  {
+    title: "Mathématiques & Informatique",
+    tag: "Filière MPSI",
+    tagColor: "bg-accent/10 text-accent",
+    description: "Programme intensif de mathématiques et informatique avec préparation aux concours des grandes écoles et projets algorithmiques.",
+    image: SKETCHING_IMG,
+    students: 100,
+    courses: 6,
+    schedule: [
+      { time: "8h00", activity: "Analyse mathématique" },
+      { time: "10h00", activity: "Algèbre et géométrie" },
+      { time: "13h00", activity: "Informatique et programmation" },
+      { time: "15h00", activity: "Olympiades mathématiques" },
+    ],
+  },
+];
+
+export default function Academique() {
+  return (
+    <div className="pt-20">
+      {/* Header */}
+      <section className="py-20 lg:py-28 border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4 font-medium">
+              Programmes académiques
+            </p>
+            <h1 className="font-heading text-5xl lg:text-7xl leading-tight mb-6">
+              L'écosystème<br />
+              <span className="italic text-primary">académique</span>
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
+              Chaque filière est conçue comme un parcours d'excellence, 
+              alliant rigueur intellectuelle et ouverture créative pour 
+              préparer nos élèves aux défis du futur.
+            </p>
+          </motion.div>
         </div>
+      </section>
+
+      {/* Departments Grid */}
+      <section className="py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {departments.map((dept) => (
+              <DepartmentCard key={dept.title} department={dept} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Approach */}
+      <section className="py-20 lg:py-28 bg-secondary/50 border-t border-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="font-heading text-3xl lg:text-4xl mb-8">
+              Notre approche <span className="italic text-accent">pédagogique</span>
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-12">
+              Au-delà des programmes officiels, notre pédagogie repose sur trois piliers 
+              fondamentaux qui guident chaque moment de la vie scolaire.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                number: "01",
+                title: "Excellence intellectuelle",
+                desc: "Des enseignants passionnés et exigeants qui cultivent la curiosité et la rigueur de la pensée.",
+              },
+              {
+                number: "02",
+                title: "Accompagnement personnalisé",
+                desc: "Un suivi individuel de chaque élève avec des tutorats réguliers et des objectifs sur mesure.",
+              },
+              {
+                number: "03",
+                title: "Ouverture au monde",
+                desc: "Voyages d'études, conférences, partenariats internationaux et engagement citoyen.",
+              },
+            ].map((pillar) => (
+              <motion.div
+                key={pillar.number}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="p-8 bg-background border border-border"
+              >
+                <span className="font-heading text-4xl text-primary/20">{pillar.number}</span>
+                <h3 className="font-heading text-xl mt-4 mb-3">{pillar.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{pillar.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
-
-    <nav class="navbar">
-        <div class="container flex-between">
-            <a href="#" class="brand">
-                <div class="logo-box">E</div>
-                <div class="brand-text">
-                    <span class="main-title">LYCÉE EXCELLENCE</span>
-                    <span class="sub-title">Établissement Homologué</span>
-                </div>
-            </a>
-            
-            <ul class="nav-menu">
-                <li><a href="#etablissement">L'Établissement</a></li>
-                <li><a href="#pedagogie">Pédagogie</a></li>
-                <li><a href="#actualites">Actualités</a></li>
-                <li><a href="https://index.pronote.net" class="btn-ent">PRONOTE</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <div class="video-bg">
-            <!-- Lien vidéo d'ambiance éducative -->
-            <iframe src="https://player.vimeo.com/video/336212358?background=1&autoplay=1&loop=1&byline=0&title=0" frameborder="0" allow="autoplay; fullscreen"></iframe>
-        </div>
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <h1>Apprendre, Grandir, Réussir.</h1>
-                <p>Le pôle d'excellence académique au service de l'avenir de vos enfants.</p>
-                <div class="hero-actions">
-                    <a href="#" class="btn-primary">Visite Virtuelle</a>
-                    <a href="#" class="btn-outline">Inscriptions</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="actualites" class="container section-padding">
-        <h2 class="title-decorated">Dernières Actualités</h2>
-        <div class="grid-news">
-            <!-- Article 1 -->
-            <article class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1523240682765-e70e8b99d0fc?auto=format&fit=crop&w=800&q=80')"></div>
-                <div class="card-body">
-                    <span class="tag">Événement</span>
-                    <h3>Journée Portes Ouvertes 2026</h3>
-                    <p>Venez découvrir nos infrastructures et rencontrer l'équipe pédagogique le 15 mai prochain.</p>
-                </div>
-            </article>
-            <!-- Article 2 -->
-            <article class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80')"></div>
-                <div class="card-body">
-                    <span class="tag">Succès</span>
-                    <h3>Lauréats du Concours Général</h3>
-                    <p>Félicitations à nos élèves pour leurs résultats exceptionnels cette année encore.</p>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Lycée Excellence | Conçu pour la réussite.</p>
-    </footer>
-
-</body>
-</html>
+  );
+}
