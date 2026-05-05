@@ -1,174 +1,161 @@
-import React from "react";
-import { motion } from "framer-motion";
-import DepartmentCard from "../components/academic/DepartmentCard";
-
-const SKETCHING_IMG = "https://media.base44.com/images/public/69f933df593f889c9af55a17/e4987cfe9_generated_2bf23d4a.png";
-const SCIENCE_IMG = "https://media.base44.com/images/public/69f933df593f889c9af55a17/aa66a3441_generated_99c6eed9.png";
-const DEBATE_IMG = "https://media.base44.com/images/public/69f933df593f889c9af55a17/d041b7776_generated_5da80522.png";
-const ART_IMG = "https://media.base44.com/images/public/69f933df593f889c9af55a17/66018e15f_generated_914a2f67.png";
-const LIBRARY_IMG = "https://media.base44.com/images/public/69f933df593f889c9af55a17/117d50349_generated_013b1044.png";
-
-const departments = [
-  {
-    title: "Sciences & Technologies",
-    tag: "Filière S",
-    tagColor: "bg-accent/10 text-accent",
-    description: "Notre pôle scientifique offre un enseignement rigoureux en physique-chimie, SVT, sciences de l'ingénieur et numérique, avec des laboratoires équipés des dernières technologies.",
-    image: SCIENCE_IMG,
-    students: 120,
-    courses: 8,
-    schedule: [
-      { time: "8h00", activity: "Mathématiques avancées" },
-      { time: "10h00", activity: "Physique-Chimie en laboratoire" },
-      { time: "13h00", activity: "Sciences de l'Ingénieur" },
-      { time: "15h00", activity: "Projet scientifique encadré" },
-    ],
-  },
-  {
-    title: "Lettres & Humanités",
-    tag: "Filière L",
-    tagColor: "bg-primary/10 text-primary",
-    description: "Littérature française et mondiale, philosophie, histoire et géographie pour former des penseurs critiques et des esprits ouverts sur le monde.",
-    image: LIBRARY_IMG,
-    students: 90,
-    courses: 7,
-    schedule: [
-      { time: "8h00", activity: "Littérature française" },
-      { time: "10h00", activity: "Philosophie et éthique" },
-      { time: "13h00", activity: "Histoire contemporaine" },
-      { time: "15h00", activity: "Atelier d'écriture créative" },
-    ],
-  },
-  {
-    title: "Arts & Création",
-    tag: "Filière Arts",
-    tagColor: "bg-primary/10 text-primary",
-    description: "Arts plastiques, arts numériques, design et expression artistique dans des ateliers lumineux équipés pour la création contemporaine.",
-    image: ART_IMG,
-    students: 60,
-    courses: 6,
-    schedule: [
-      { time: "8h00", activity: "Histoire de l'Art" },
-      { time: "10h00", activity: "Atelier de création plastique" },
-      { time: "13h00", activity: "Arts numériques & Design" },
-      { time: "15h00", activity: "Projet artistique personnel" },
-    ],
-  },
-  {
-    title: "Langues & International",
-    tag: "Section Internationale",
-    tagColor: "bg-accent/10 text-accent",
-    description: "Sections bilingues, programmes d'échanges internationaux et préparation aux certifications linguistiques dans plus de six langues.",
-    image: DEBATE_IMG,
-    students: 80,
-    courses: 5,
-    schedule: [
-      { time: "8h00", activity: "Anglais littéraire avancé" },
-      { time: "10h00", activity: "Civilisation hispanique" },
-      { time: "13h00", activity: "Mandarin ou Arabe" },
-      { time: "15h00", activity: "Débat international (MUN)" },
-    ],
-  },
-  {
-    title: "Mathématiques & Informatique",
-    tag: "Filière MPSI",
-    tagColor: "bg-accent/10 text-accent",
-    description: "Programme intensif de mathématiques et informatique avec préparation aux concours des grandes écoles et projets algorithmiques.",
-    image: SKETCHING_IMG,
-    students: 100,
-    courses: 6,
-    schedule: [
-      { time: "8h00", activity: "Analyse mathématique" },
-      { time: "10h00", activity: "Algèbre et géométrie" },
-      { time: "13h00", activity: "Informatique et programmation" },
-      { time: "15h00", activity: "Olympiades mathématiques" },
-    ],
-  },
-];
-
-export default function Academique() {
-  return (
-    <div className="pt-20">
-      {/* Header */}
-      <section className="py-20 lg:py-28 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4 font-medium">
-              Programmes académiques
-            </p>
-            <h1 className="font-heading text-5xl lg:text-7xl leading-tight mb-6">
-              L'écosystème<br />
-              <span className="italic text-primary">académique</span>
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
-              Chaque filière est conçue comme un parcours d'excellence, 
-              alliant rigueur intellectuelle et ouverture créative pour 
-              préparer nos élèves aux défis du futur.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Departments Grid */}
-      <section className="py-20 lg:py-28">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {departments.map((dept) => (
-              <DepartmentCard key={dept.title} department={dept} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Approach */}
-      <section className="py-20 lg:py-28 bg-secondary/50 border-t border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="font-heading text-3xl lg:text-4xl mb-8">
-              Notre approche <span className="italic text-accent">pédagogique</span>
-            </h2>
-            <p className="text-muted-foreground leading-relaxed mb-12">
-              Au-delà des programmes officiels, notre pédagogie repose sur trois piliers 
-              fondamentaux qui guident chaque moment de la vie scolaire.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                number: "01",
-                title: "Excellence intellectuelle",
-                desc: "Des enseignants passionnés et exigeants qui cultivent la curiosité et la rigueur de la pensée.",
-              },
-              {
-                number: "02",
-                title: "Accompagnement personnalisé",
-                desc: "Un suivi individuel de chaque élève avec des tutorats réguliers et des objectifs sur mesure.",
-              },
-              {
-                number: "03",
-                title: "Ouverture au monde",
-                desc: "Voyages d'études, conférences, partenariats internationaux et engagement citoyen.",
-              },
-            ].map((pillar) => (
-              <motion.div
-                key={pillar.number}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="p-8 bg-background border border-border"
-              >
-                <span className="font-heading text-4xl text-primary/20">{pillar.number}</span>
-                <h3 className="font-heading text-xl mt-4 mb-3">{pillar.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{pillar.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <link href="https://media.base44.com/images/public/69f933df593f889c9af55a17/97fbf2b8c_logo.png" rel="icon" type="image/svg+xml"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="/manifest.json" rel="manifest"/>
+  <title>
+   Academique | Le Prisme
+  </title>
+  <script crossorigin="" src="/assets/index-Bt2zEuzm.js" type="module">
+  </script>
+  <link crossorigin="" href="/assets/index-B3B8bt8X.css" rel="stylesheet"/>
+  <script type="module">
+   if (window.self === window.top) {
+  let lastPath = "";
+  function getPageNameFromPath(path) {
+    const segments = path.split("/").filter(Boolean);
+    return segments[0] || null;
+  }
+  function trackPageView() {
+    const path = window.location.pathname;
+    if (path === lastPath) return;
+    lastPath = path;
+    const pageName = getPageNameFromPath(path) || "home";
+    const appId = "69f933df593f889c9af55a17";
+    if (!appId) return;
+    fetch(`/app-logs/${appId}/log-user-in-app/${pageName}`, {
+      method: "POST",
+    }).catch(() => {});
+  }
+  const originalPushState = history.pushState.bind(history);
+  history.pushState = function (...args) {
+    originalPushState(...args);
+    trackPageView();
+  };
+  const originalReplaceState = history.replaceState.bind(history);
+  history.replaceState = function (...args) {
+    originalReplaceState(...args);
+    trackPageView();
+  };
+  window.addEventListener("popstate", trackPageView);
+  trackPageView();
 }
+  </script>
+  <meta content="Academique on Le Prisme. Une interface numérique prestigieuse conçue comme un incubateur académique pour ." name="description"/>
+  <meta content="Academique | Le Prisme" property="og:title"/>
+  <meta content="Academique on Le Prisme. Une interface numérique prestigieuse conçue comme un incubateur académique pour ." property="og:description"/>
+  <meta content="https://media.base44.com/images/public/69f933df593f889c9af55a17/97fbf2b8c_logo.png/v1/fill/w_1200,h_630/97fbf2b8c_logo.png" property="og:image"/>
+  <meta content="https://prisme-future-path.base44.app/academique" property="og:url"/>
+  <meta content="website" property="og:type"/>
+  <meta content="Le Prisme" property="og:site_name"/>
+  <meta content="Academique | Le Prisme" name="twitter:title"/>
+  <meta content="Academique on Le Prisme. Une interface numérique prestigieuse conçue comme un incubateur académique pour ." name="twitter:description"/>
+  <meta content="https://media.base44.com/images/public/69f933df593f889c9af55a17/97fbf2b8c_logo.png/v1/fill/w_1200,h_630/97fbf2b8c_logo.png" name="twitter:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="https://prisme-future-path.base44.app/academique" name="twitter:url"/>
+  <meta content="yes" name="mobile-web-app-capable"/>
+  <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+  <meta content="Le Prisme" name="apple-mobile-web-app-title"/>
+  <link href="https://prisme-future-path.base44.app/academique" rel="canonical"/>
+  <script data-seo-source="builder" type="application/ld+json">
+   {"name": "Le Prisme", "@context": "https://schema.org", "@type": "WebSite", "url": "https://prisme-future-path.base44.app"}
+  </script>
+  <script data-seo-source="builder" type="application/ld+json">
+   {"name": "Le Prisme", "logo": "https://media.base44.com/images/public/69f933df593f889c9af55a17/97fbf2b8c_logo.png", "@context": "https://schema.org", "@type": "Organization", "url": "https://prisme-future-path.base44.app"}
+  </script>
+  <script data-seo-source="builder" type="application/ld+json">
+   {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"name": "Home", "item": "https://prisme-future-path.base44.app", "position": "1", "@type": "ListItem"}, {"name": "Academique", "item": "https://prisme-future-path.base44.app/Academique", "position": "2", "@type": "ListItem"}, {"name": "Campus", "item": "https://prisme-future-path.base44.app/Campus", "position": "3", "@type": "ListItem"}, {"name": "Admissions", "item": "https://prisme-future-path.base44.app/Admissions", "position": "4", "@type": "ListItem"}, {"name": "Contact", "item": "https://prisme-future-path.base44.app/Contact", "position": "5", "@type": "ListItem"}]}
+  </script>
+  <script async="true" data-app-id="69f933df593f889c9af55a17" data-platform-url="https://app.base44.com" src="/static/js/badge.js">
+  </script>
+ </head>
+ <body>
+  <div id="root">
+   <div data-seo-source="builder" id="seo-snapshot" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
+    <h1>
+     Academique | Le Prisme
+    </h1>
+    <p>
+     Academique on Le Prisme. Une interface numérique prestigieuse conçue comme un incubateur académique pour .
+    </p>
+    <nav aria-label="Pages">
+     <h2>
+      Pages
+     </h2>
+     <ul>
+      <li>
+       <a href="/Academique">
+        Academique
+       </a>
+      </li>
+      <li>
+       <a href="/Campus">
+        Campus
+       </a>
+      </li>
+      <li>
+       <a href="/APropos">
+        APropos
+       </a>
+      </li>
+      <li>
+       <a href="/Home">
+        Home
+       </a>
+      </li>
+      <li>
+       <a href="/EspaceEleves">
+        EspaceEleves
+       </a>
+      </li>
+      <li>
+       <a href="/EspaceEnseignants">
+        EspaceEnseignants
+       </a>
+      </li>
+      <li>
+       <a href="/Actualites">
+        Actualites
+       </a>
+      </li>
+      <li>
+       <a href="/Contact">
+        Contact
+       </a>
+      </li>
+      <li>
+       <a href="/Admissions">
+        Admissions
+       </a>
+      </li>
+      <li>
+       <a href="/Galerie">
+        Galerie
+       </a>
+      </li>
+      <li>
+       <a href="/Orientation">
+        Orientation
+       </a>
+      </li>
+     </ul>
+    </nav>
+    <section aria-label="Data">
+     <h2>
+      Data types
+     </h2>
+     <ul>
+      <li>
+       NewsArticle
+      </li>
+      <li>
+       ContactMessage
+      </li>
+     </ul>
+    </section>
+   </div>
+  </div>
+ </body>
+</html>
